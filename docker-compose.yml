@@ -1,0 +1,56 @@
+version: '3'
+
+services:
+
+  shadowsocks-python:
+    build: 
+      context: .
+      dockerfile: Dockerfile-shadowsocks-python
+    hostname: shadowsocks-python
+    environment: 
+      MANAGER_ADDRESS: "0.0.0.0:6001"
+      BRANCH: 2.9.1
+    restart: always
+    expose:
+      - 6001
+    ports:
+      - 55000-55099:55000-55099
+    labels:
+      type: "shadowsocks"
+
+  shadowsocks-redis:
+    image: 'redis:latest'
+    hostname: shadowsocks-redis
+    restart: always
+    expose:
+      - 6379
+    labels:
+      type: "shadowsocks"
+    volumes:
+      - shadowsocks-redis-data:/data
+
+  shadowsocks-manager:
+    build: 
+      context: .
+      dockerfile: Dockerfile-shadowsocks-manager
+    hostname: shadowsocks-manager
+    ports:
+      - 10000:10000
+      - 4001:4001
+    depends_on:
+      - shadowsocks-python
+      - shadowsocks-redis
+    links:
+      - shadowsocks-python
+      - shadowsocks-redis
+    volumes:
+      - ./.ssmgr:/root/.ssmgr
+    labels:
+      type: "shadowsocks"
+    command: >
+      sh -c "ssmgr -c /root/.ssmgr/default.yml &
+             ssmgr -c /root/.ssmgr/webgui.yml"
+
+volumes:
+  shadowsocks-redis-data:
+  shadowsocks-mysql-data:

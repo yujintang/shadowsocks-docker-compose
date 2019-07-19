@@ -1,0 +1,8 @@
+type: s
+
+shadowsocks:
+  address: shadowsocks-python:6001      # shadowsocks的管理端口
+manager:
+  address: 0.0.0.0:4001                 # 这个 address 参数会让程序监听一个 tcp 端口，用于接收 webgui 发送过来的控制命令
+  password: '!*@sbx1&$#sdf@e#q'         # webgui添加节点时的密码
+db: 'manager.sqlite'

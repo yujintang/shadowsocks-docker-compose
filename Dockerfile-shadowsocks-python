@@ -1,0 +1,19 @@
+FROM alpine:3.9
+
+ENV MANAGER_ADDRESS 127.0.0.1:6001
+ENV BRANCH 2.9.1
+ENV METHOD aes-256-cfb
+ENV PORT 8388
+ENV PASSWORD !DS8_0*^f3$%gdsM
+
+ARG WORK=~
+RUN apk --no-cache add python \
+    libsodium \
+    wget
+
+RUN mkdir -p $WORK && \
+    wget -qO- --no-check-certificate https://github.com/shadowsocks/shadowsocks/archive/$BRANCH.tar.gz | tar -xzf - -C $WORK
+
+WORKDIR $WORK/shadowsocks-$BRANCH/shadowsocks
+
+CMD python server.py -m $METHOD -p $PORT -k $PASSWORD --manager-address $MANAGER_ADDRESS

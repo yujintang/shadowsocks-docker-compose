@@ -1,0 +1,49 @@
+type: m
+
+manager:
+  address: 127.0.0.1:4001           # 127.0.0.1更改成S端的真实IP
+  password: '!*@sbx1&$#sdf@e#q'
+  # 这部分的端口和密码需要跟上一步 manager 参数里的保持一致，以连接 type s 部分监听的 tcp 端口
+plugins:
+  flowSaver:
+    use: true
+  user:
+    use: true
+  account:
+    use: true
+  macAccount:
+    use: true
+  group:
+    use: true
+  email:
+    use: true
+    type: 'smtp'
+    username: 'shanquan54@gmail.com'          # 你的邮箱地址
+    password: 'password'                    # 邮箱密码
+    host: 'smtp.gmail.com'                    # 邮箱smtp地址
+    # 这部分的邮箱和密码是用于发送注册验证邮件，重置密码邮件
+  webgui:
+    use: true
+    host: '0.0.0.0'
+    port: '10000'
+    site: 'http://yourwebsite.com'
+    admin_username: 'shanquan54@gmail.com'  # 管理员账号
+    admin_password: 'password'              # 管理员密码
+    # icon: 'icon.png'
+    # skin: 'default'
+    # googleAnalytics: 'UA-xxxxxxxx-x'
+    # gcmSenderId: '476902381496'
+    # gcmAPIKey: 'AAAAGzddLRc:XXXXXXXXXXXXXX'
+    # google_login_client_id: '724695589056-p78tu8738t4fjel56yhe34qq34gjufsi.apps.googleusercontent.com'
+    # google_login_client_secret: 'TjUd36YnQ-YUI2uUtQa_43Tl'
+    # facebook_login_client_id: '9825686749820123'
+    # facebook_login_client_secret: 'a46c6bb6f8281c23d2b74b43008c9c46'
+    # github_login_client_id: '7c45c34c1de3ef937d37'
+    # github_login_client_secret: 'd2768efe5258cfb9ce4da11ed7ddc334bc65756b'
+    # twitter_login_consumer_key: 'tKPH3RViDT68PtHBMHYJuQ'
+    # twitter_login_consumer_secret: 'wYCtWdUSEfm8H3ES0r5rgHKeqGvYGiFDrGj4THiq3T6'
+db: 'webgui.sqlite'
+redis:
+  host: 'shadowsocks-redis'
+  port: 6379
+  db: 0
