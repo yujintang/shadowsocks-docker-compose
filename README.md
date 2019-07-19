@@ -19,10 +19,10 @@ cd shadowsocks-docker-compose
 
 ![](https://raw.githubusercontent.com/yujintang/imageHosting/master/wechat/WechatIMG5816.jpeg)
 
-2. 修改邮箱配置 .ssmgr/webgui.yml
+2. 修改邮箱配置(注册用户发送注册码，修改密码等操作) .ssmgr/webgui.yml 
 ![](https://raw.githubusercontent.com/yujintang/imageHosting/master/wechat/WeChat8958daa430434ee93d2dd60aaaa003e0.png)
 
-3. 修改管理员用户名、密码 .ssmgr/webghui.yml
+3. 修改管理员用户名、密码（初始用户用来管理web admin） .ssmgr/webghui.yml
 ![](https://raw.githubusercontent.com/yujintang/imageHosting/master/wechat/WeChatbcddc8b9533ed431ead0d73a11cfedae.png)
 
 ## 启动项目
